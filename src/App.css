@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  background: #000;
+}
+.stories-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+.story-list {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  background: #fff;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.story-list::-webkit-scrollbar {
+  display: none;
+}
+.story-preview {
+  flex: 0 0 auto;
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #e1306c;
+}
+.story-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.story-viewer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+.story-viewer.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.story-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.story-image.entering {
+  transform: translateX(100%);
+}
+.story-image.exiting {
+  transform: translateX(-100%);
+}
+.tap-area {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 2;
+}
+.tap-area.left {
+  left: 0;
+}
+.tap-area.right {
+  right: 0;
+}
+.progress-bar-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+}
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: #fff;
+  transition: width linear;
+}
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 18px;
+}
+@media (min-width: 768px) {
+  .stories-container {
+    max-width: 414px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+}
